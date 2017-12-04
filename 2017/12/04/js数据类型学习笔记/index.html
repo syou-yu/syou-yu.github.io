@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="js数据类型学习笔记"/>
+
+
+
+
+  <meta name="keywords" content="JavaScript, 学习笔记, Syouyu" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Syouyu">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/12/04/js数据类型学习笔记/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> js数据类型学习笔记 - Syouyu </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Syouyu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Syouyu</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          js数据类型学习笔记
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-12-04
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型"><span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof操作符"><span class="toc-text">typeof操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean转换规则"><span class="toc-text">Boolean转换规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数值计算舍入误差"><span class="toc-text">浮点数值计算舍入误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于NaN"><span class="toc-text">关于NaN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Number数值转换"><span class="toc-text">Number数值转换</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <ul>
+<li>数据类型、typeof操作符、Boolean转换规则、浮点数值计算舍入误差、关于NaN、Number数值转换<a id="more"></a>
+</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>5种<strong>简单数据类型</strong>（基本数据类型）：<code>Undefined、Null、Boolean、Number、String</code><br>1种<strong>复杂数据类型</strong>：<code>Object</code> </p>
+<hr>
+<h2 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h2><p><strong>检测给定变量的数据类型.</strong><br>对一个值使用<code>typeof</code>操作符可能返回下列某个字符串：<br><code>undefined</code>——如果这个值<code>未定义</code>；<br><code>boolean</code>——如果这个值是<code>布尔值</code>；<br><code>string</code>——如果这个值是<code>字符串</code>；<br><code>number</code>——如果这个值是<code>数值</code>；<br><code>object</code>——如果这个值是<code>对象</code>或<code>null</code>；<br><code>function</code>——如果这个值是<code>函数</code>；</p>
+<p><strong>调用<code>typeof null</code>会返回“<code>object</code>”，因为特殊值null被认为是一个空的对象引用（null值表示一个空对象指针）；</strong></p>
+<hr>
+<h2 id="Boolean转换规则"><a href="#Boolean转换规则" class="headerlink" title="Boolean转换规则"></a>Boolean转换规则</h2><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转化为true的值</th>
+<th>转化为false的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td>任何非空字符串</td>
+<td>“ “(空字符串)</td>
+</tr>
+<tr>
+<td><code>Number</code></td>
+<td>任何非零数字值（包括无穷大）</td>
+<td>0和NaN</td>
+</tr>
+<tr>
+<td><code>Object</code></td>
+<td>任何对象</td>
+<td>null</td>
+</tr>
+<tr>
+<td><code>Undefined</code></td>
+<td>n/a(N/A)</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="浮点数值计算舍入误差"><a href="#浮点数值计算舍入误差" class="headerlink" title="浮点数值计算舍入误差"></a>浮点数值计算舍入误差</h2><p>浮点数值的最高精度是17位小数，但在进行算术计算时其精确度远远不如整数。<br>例如，<strong>0.1加0.2的结果不是0.3，而是0.30000000000000004。</strong> 这个小小的舍入误差会导致无法测试特定的浮点数值。（使用基于IEEE754数值浮点计算的通病）<br><strong>因此，不要测试某个特定的浮点数值。</strong></p>
+<hr>
+<h2 id="关于NaN"><a href="#关于NaN" class="headerlink" title="关于NaN"></a>关于NaN</h2><p>用于表示一个<strong>本来要返回数值的操作数未返回数值的情况</strong>（为了避免抛出错误）<br>特点：<br>1.任何涉及NaN的操作（例如NaN/10）都会返回Nan。<br>2.NaN与任何值都不相等，包括NaN本身。（NaN != NaN）</p>
+<p><strong><code>isNaN()</code>函数：</strong><br>确定一个参数是否“不是数值”。<br><strong>在接受一个值之后，会尝试将这个值转化为数值</strong>，某些不是数值的值会直接转化为数值，如字符串”10”或Boolean值。任何不能转被转换为数值的值会导致isNaN()返回true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">alert(isNaN(NaN));  //true</div><div class="line">alert(isNaN(10));   //false(10是一个数值)</div><div class="line">alert(isNaN(&quot;10&quot;));  //false(可以被转换成数值)</div><div class="line">alert(isNaN(&quot;blue&quot;));  //true(不能被转换成数值)</div><div class="line">alert(isNaN(true));  //false(可以被转换成数值1)</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Number数值转换"><a href="#Number数值转换" class="headerlink" title="Number数值转换"></a>Number数值转换</h2><p><code>Number()</code>:用于任何数据类型转换为数值。<br><code>parseInt()</code>、<code>parseFloat()</code>:把字符串转换成数值。</p>
+<p><strong><code>Number()</code>转换规则:</strong></p>
+<ul>
+<li>1.如果是<code>Boolean</code>值，true和false将分别被转换为1和0；</li>
+<li>2.如果是数字值，只是简单的传入和返回；</li>
+<li>3.如果是<code>null</code>值，返回0；</li>
+<li>4.如果是<code>undefined</code>，返回NaN；</li>
+<li>5.如果是字符串:<ul>
+<li>1.只包含数字，转换成十进制数值；(“123”变成123；”011”变成11 //去零)</li>
+<li>2.包含有效的浮点格式，转换为对应的浮点数值；</li>
+<li>3.包含有效的十六进制格式,转换为相同大小的十进制数值；</li>
+<li>4.空字符串，转换为0；</li>
+<li>5.包含除上述格式之外的字符，转换为NaN。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var num1 = Number(&quot;hello world&quot;);  //NaN</div><div class="line">var num2 = Number(&quot;&quot;);             //0</div><div class="line">var num3 = Number(&quot;000011&quot;);       //11</div><div class="line">var num4 = Number(true);           //1</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>parseInt()</code>转换规则:</strong></p>
+<ul>
+<li>1.忽略字符串前面的空格，直至找到第一个非空格字符。</li>
+<li>2.如果第一个字符不是数字字符或者负号，返回NaN（转换空字符串会返回NaN。）</li>
+<li>3.如果第一个字符是数字字符，继续解析第二个字符，直到解析完所有后续字符或遇到了一个非数字字符。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var num1 = parseInt(&quot;1234blue&quot;);//1234</div><div class="line">var num2 = parseInt(&quot;&quot;);        //NaN ( Number()返回0 )</div><div class="line">var num3 = parseInt(&quot;0xA&quot;);     //10(十六进制)</div><div class="line">var num4 = parseInt(&quot;22.5&quot;);    //22(小数点不是有效数字字符)</div><div class="line">var num5 = parseInt(&quot;070&quot;);     //56(八进制)</div><div class="line">var num6 = parseInt(&quot;70&quot;);      //70（十进制）</div><div class="line">---</div><div class="line">var num7 = parseInt(&quot;10&quot;,2)     //2(按二进制解析)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://yoursite.com">Syouyu</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://yoursite.com/2017/12/04/js数据类型学习笔记/">http://yoursite.com/2017/12/04/js数据类型学习笔记/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/11/25/vue-router中传递参数/">
+        <span class="next-text nav-default">vue-router中传递参数</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:921393502@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/syou-yu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="http://www.jianshu.com/u/23bdc8ac2543" class="iconfont icon-jianshu" title="jianshu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Syouyu</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
