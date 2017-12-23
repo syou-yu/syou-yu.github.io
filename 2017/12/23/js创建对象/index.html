@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="js创建对象"/>
 
 
+
+
+  <meta name="keywords" content="JavaScript, 学习笔记, Syouyu" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/12/23/js创建对象/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -75,7 +79,7 @@
 
 
 
-    <title> Syouyu </title>
+    <title> js创建对象 - Syouyu </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -168,14 +172,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/12/23/js创建对象/">js创建对象</a>
+          js创建对象
         
       </h1>
 
@@ -190,14 +192,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂模式、构造函数模式、原型模式"><span class="toc-text">工厂模式、构造函数模式、原型模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工厂模式"><span class="toc-text">工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-目的"><span class="toc-text">1. 目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-工厂模式例子"><span class="toc-text">2. 工厂模式例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-存在问题"><span class="toc-text">3. 存在问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构造函数模式"><span class="toc-text">构造函数模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-构造函数模式例子"><span class="toc-text">1. 构造函数模式例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-与工厂模式的不同"><span class="toc-text">2. 与工厂模式的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-解决工厂模式的不足"><span class="toc-text">3. 解决工厂模式的不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-构造函数的调用"><span class="toc-text">4. 构造函数的调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-存在问题"><span class="toc-text">5. 存在问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原型模式"><span class="toc-text">原型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-目的-1"><span class="toc-text">1. 目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-原型模式例子"><span class="toc-text">2. 原型模式例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-理解原型对象"><span class="toc-text">3. 理解原型对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-属性在哪？"><span class="toc-text">4. 属性在哪？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-化简原型语法"><span class="toc-text">5. 化简原型语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-动态性问题"><span class="toc-text">6. 动态性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-存在问题"><span class="toc-text">7. 存在问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <a id="more"></a>
+        <a id="more"></a>
 <h2 id="工厂模式、构造函数模式、原型模式"><a href="#工厂模式、构造函数模式、原型模式" class="headerlink" title="工厂模式、构造函数模式、原型模式"></a>工厂模式、构造函数模式、原型模式</h2><p><strong>Q:</strong> 为什么要选择下面所讲的模式创建对象？<br><strong>A:</strong> 因为虽然使用Object构造函数或者字面量(<code>var person={};</code>)可以创建单个对象,<br>但它会<strong>产生大量的重复性代码</strong>(重复创建类似的对象)，俗称重复造轮子。</p>
 <hr>
 <h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1. 目的"></a><strong>1. 目的</strong></h2><p>解决 <strong>使用同一个接口创建很多对象，导致产生大量重复代码</strong>的问题。</p>
@@ -251,204 +256,71 @@
 <li><strong>总结源于JavaScript 高级程序设计（第3版）P144~160 创建对象</strong></li>
 </ul>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/18/Array类型学习笔记/">Array类型学习笔记</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-18
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://yoursite.com">Syouyu</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://yoursite.com/2017/12/23/js创建对象/">http://yoursite.com/2017/12/23/js创建对象/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          <p>创建数组、检测数组、转换方法、栈方法&amp;队列方法、重排序方法、操作方法、位置方法、迭代方法、归并方法。<br>
-          <div class="read-more">
-            <a href="/2017/12/18/Array类型学习笔记/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/04/js数据类型学习笔记/">js数据类型学习笔记</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-04
-        </span>
         
         
-      </div>
-    </header>
-
+  <nav class="post-nav">
     
     
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>数据类型、typeof操作符、Boolean转换规则、浮点数值计算舍入误差、关于NaN、Number数值转换<br>
-          <div class="read-more">
-            <a href="/2017/12/04/js数据类型学习笔记/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/11/25/vue-router中传递参数/">vue-router中传递参数</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-11-25
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在vue-router中设置和获取参数的方法<br>
-          <div class="read-more">
-            <a href="/2017/11/25/vue-router中传递参数/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/05/Markdown基本语法/">Markdown基本语法</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-10-05
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>Markdown基本语法笔记<br>
-          <div class="read-more">
-            <a href="/2017/10/05/Markdown基本语法/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2017/12/18/Array类型学习笔记/">
+        <span class="next-text nav-default">Array类型学习笔记</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -535,6 +407,8 @@
     </div>
 
     
+  
+
 
 
     
