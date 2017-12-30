@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="js继承"/>
+
+
+
+
+  <meta name="keywords" content="学习笔记, JavaScript, Syouyu" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Syouyu">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/12/25/js继承/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> js继承 - Syouyu </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Syouyu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Syouyu</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          js继承
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-12-25
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#原型链继承"><span class="toc-text">原型链继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-例子"><span class="toc-text">1. 例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-确定原型和实例的关系"><span class="toc-text">2. 确定原型和实例的关系</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>工厂模式、构造函数模式、原型模式<br><a id="more"></a></p>
+<h1 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h1><p>利用原型让一个引用类型继承另一个应用类型的属性和方法。</p>
+<h2 id="1-例子"><a href="#1-例子" class="headerlink" title="1. 例子"></a>1. 例子</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.parentValue = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.getParentValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.parentValue;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.childValue = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Child继承了Parent</span></div><div class="line">Child.prototype = <span class="keyword">new</span> Parent();</div><div class="line"></div><div class="line">Child.prototype.getChildValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.childValue;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> Child();</div><div class="line">alert(instance.getParentValue()); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>上面的代码主要的意思是：</p>
+<ol>
+<li>创建Parent的实例；</li>
+<li>在Parent的原型上定义一个getParentValue()的方法；</li>
+<li>创建Child的实例；</li>
+<li>将Parent的实例赋给Child.prototype;(原来存在于Parent的实例中的所有属性和方法，现在也存在于Child.prototype中)</li>
+<li>在Child的原型上定义一个getChildValue()的方法；(在继承了Parent的属性和方法的基础上添加了一个新方法)<br><strong>最终结果就是：instance指向Child的原型，Child的原型又指向Parent的原型。</strong><br><img src="http://i2.bvimg.com/625076/eb446f4415045513.jpg" alt="Markdown"><br>有需要注意的是：</li>
+</ol>
+<ul>
+<li><strong>getParentValue的方法依然还在Parent.prototype中，但parentValue则位于Child.prototype中。</strong>这是因为parentValue是一个实例属性，而getParentValue()是一个原型方法。Child.prototype是Parent的实例，所以parentValue作为实例属性就位于实例（Child.prototype）中。</li>
+<li><strong>instance.constructor现在指向的是Parent</strong>，因为这时Child的原型指向了Parent的原型，而Parent原型对象的constructor属性指向的是Parent。</li>
+</ul>
+<hr>
+<p>其实，上面的原型链并不完整，因为所有的引用类型都默认的继承了Object，所以所有的函数默认原型都是Object实例，因此<strong>默认原型都会包含一个内部指针，指向Object.prototype。</strong><br>即上面的Parent.prototype中，里面还有[[Prototype]]指向Object.Prototype,而Object.Prototype中的constructor指向的是Object。</p>
+<hr>
+<h2 id="2-确定原型和实例的关系"><a href="#2-确定原型和实例的关系" class="headerlink" title="2. 确定原型和实例的关系"></a>2. 确定原型和实例的关系</h2><p>使用<code>instanceof</code>操作符和<code>isPrototypeOf()</code>的方法来确定原型和实例之间的关系。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// instanceof操作符</span></div><div class="line">alert (instance <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></div><div class="line">alert (instance <span class="keyword">instanceof</span> Parent); <span class="comment">//true</span></div><div class="line">alert (instance <span class="keyword">instanceof</span> Child); <span class="comment">//true</span></div><div class="line"><span class="comment">// instance是Object、Parent、Child中任何一个类型的实例。</span></div><div class="line"></div><div class="line"><span class="comment">// isPrototypeOf()的方法</span></div><div class="line">alert (<span class="built_in">Object</span> isPrototypeOf instance); <span class="comment">//true</span></div><div class="line">alert (Parent isPrototypeOf instance); <span class="comment">//true</span></div><div class="line">alert (Child isPrototypeOf instance); <span class="comment">//true</span></div><div class="line"><span class="comment">// Object、Parent、Child是instance的原型</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>未完待续。。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">Syouyu</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2017/12/25/js继承/">http://yoursite.com/2017/12/25/js继承/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/12/30/Flexbox学习笔记/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Flexbox学习笔记</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/12/23/js创建对象/">
+        <span class="next-text nav-default">js创建对象</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:921393502@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/syou-yu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="http://www.jianshu.com/u/23bdc8ac2543" class="iconfont icon-jianshu" title="jianshu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Syouyu</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

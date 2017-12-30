@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Flexbox学习笔记"/>
+
+
+
+
+  <meta name="keywords" content="CSS, 学习笔记, Syouyu" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Syouyu">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/12/30/Flexbox学习笔记/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> Flexbox学习笔记 - Syouyu </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Syouyu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Syouyu</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Flexbox学习笔记
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-12-30
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#弹性盒子模型"><span class="toc-text">弹性盒子模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容器的属性"><span class="toc-text">容器的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-flex-direction"><span class="toc-text">1. flex-direction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-flex-wrap"><span class="toc-text">2. flex-wrap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-flex-flow"><span class="toc-text">3. flex-flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-justify-content"><span class="toc-text">4. justify-content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-align-items"><span class="toc-text">5. align-items</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-align-content"><span class="toc-text">6. align-content</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目的属性"><span class="toc-text">项目的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-order"><span class="toc-text">1. order</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-flex-grow"><span class="toc-text">2. flex-grow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-flex-shrink"><span class="toc-text">3. flex-shrink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-flex-basis"><span class="toc-text">4. flex-basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-flex"><span class="toc-text">5. flex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-align-self"><span class="toc-text">6. align-self</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在线弹性盒子演示"><span class="toc-text">在线弹性盒子演示</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>Flexbox弹性盒子用法总结<br><a id="more"></a></p>
+<hr>
+<h1 id="弹性盒子模型"><a href="#弹性盒子模型" class="headerlink" title="弹性盒子模型"></a>弹性盒子模型</h1><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br>以下是一个<code>flex-direction</code>属性为 <code>row</code> 的弹性容器模型:<br><img src="https://mdn.mozillademos.org/files/12998/flexbox.png" alt="弹性容器模型"></p>
+<p><strong>弹性容器(Flex container)</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></div><div class="line">  <span class="attribute">display</span>: flex | inline-flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>包含着弹性项目的父元素。通过设置 display 属性的值为 <code>flex</code> 或 <code>inline-flex</code> 来定义弹性容器。(<code>display:flex/inline-flex</code>)</li>
+<li>值 flex 使弹性容器成为<strong>块级元素</strong>。</li>
+<li>值 inline-flex 使弹性容器成为<strong>单个不可分的行内级元素</strong>。</li>
+<li>Webkit内核的浏览器，必须加上-webkit前缀。</li>
+</ul>
+<hr>
+<h1 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h1><p>以下属性设置在弹性容器(Flex container)上。</p>
+<h2 id="1-flex-direction"><a href="#1-flex-direction" class="headerlink" title="1. flex-direction"></a>1. flex-direction</h2><p><strong>决定主轴的方向（即项目的排列方向）。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>row</code>（默认值）：主轴为水平方向，起点在左端。（<strong>从左到右</strong>）</li>
+<li><code>row-reverse</code>：主轴为水平方向，起点在右端。（<strong>从右到左</strong>）</li>
+<li><code>column</code>：主轴为垂直方向，起点在上沿。（<strong>从上到下</strong>）</li>
+<li><code>column-reverse</code>：主轴为垂直方向，起点在下沿。（<strong>从下到上</strong>）</li>
+</ul>
+<h2 id="2-flex-wrap"><a href="#2-flex-wrap" class="headerlink" title="2. flex-wrap"></a>2. flex-wrap</h2><p><strong>如果一条轴线排不下，如何换行。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>nowrap</code>（默认）：不换行。</li>
+<li><code>wrap</code>：换行，第一行在上方。</li>
+<li><code>wrap-reverse</code>：换行，第一行在下方。</li>
+</ul>
+<h2 id="3-flex-flow"><a href="#3-flex-flow" class="headerlink" title="3. flex-flow"></a>3. flex-flow</h2><p><strong>是flex-direction属性和flex-wrap属性的简写形式，默认值为<code>row nowrap</code>（从左到右排列，不换行）</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4-justify-content"><a href="#4-justify-content" class="headerlink" title="4. justify-content"></a>4. justify-content</h2><p><strong>项目在主轴上的对齐方式。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>flex-start</code>（默认值）：主轴的起点对齐</li>
+<li><code>flex-end</code>：主轴的终点对齐</li>
+<li><code>center</code>：主轴居中对齐</li>
+<li><code>space-between</code>：主轴两端对齐，项目之间间隔相等</li>
+<li><code>space-around</code>：主轴上每个项目两侧的间隔相等，项目之间包括pre右间隔+cur左间隔</li>
+</ul>
+<h2 id="5-align-items"><a href="#5-align-items" class="headerlink" title="5. align-items"></a>5. align-items</h2><p><strong>项目在交叉轴上对齐方式。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>flex-start</code>：交叉轴的起点对齐。</li>
+<li><code>flex-end</code>：交叉轴的终点对齐。</li>
+<li><code>center</code>：交叉轴中点对齐。</li>
+<li><code>baseline</code>：项目的第一行文字的基线对齐。</li>
+<li><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器高|宽。</li>
+</ul>
+<h2 id="6-align-content"><a href="#6-align-content" class="headerlink" title="6. align-content"></a>6. align-content</h2><p><strong>定义多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</strong><br>多根轴线：当<code>flex-wrap</code>设置为 <code>wrap</code>的时候，容器可能会出现多条轴线。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>flex-start</code>：与交叉轴的起点对齐。</li>
+<li><code>flex-end</code>：与交叉轴的终点对齐。</li>
+<li><code>center</code>：与交叉轴的中点对齐。</li>
+<li><code>space-between</code>：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li><code>space-around</code>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li><code>stretch</code>（默认值）：轴线占满整个交叉轴。</li>
+</ul>
+<hr>
+<h1 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h1><p>以下属性设置在弹性项目（flex item）上。</p>
+<h2 id="1-order"><a href="#1-order" class="headerlink" title="1. order"></a>1. order</h2><p><strong>定义项目的排列顺序。数值越小，排列越靠前，默认为0。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-flex-grow"><a href="#2-flex-grow" class="headerlink" title="2. flex-grow"></a>2. flex-grow</h2><p><strong>定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。</li>
+<li>如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</li>
+</ul>
+<h2 id="3-flex-shrink"><a href="#3-flex-shrink" class="headerlink" title="3. flex-shrink"></a>3. flex-shrink</h2><p><strong>定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。</li>
+<li>如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</li>
+<li>负值对该属性无效。</li>
+</ul>
+<h2 id="4-flex-basis"><a href="#4-flex-basis" class="headerlink" title="4. flex-basis"></a>4. flex-basis</h2><p><strong>定义了在分配多余空间之前，项目占据的主轴空间（main size）。</strong><br><strong>浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<h2 id="5-flex"><a href="#5-flex" class="headerlink" title="5. flex"></a>5. flex</h2><p><strong>是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<h2 id="6-align-self"><a href="#6-align-self" class="headerlink" title="6. align-self"></a>6. align-self</h2><p><strong>允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。</strong><br>默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>flex-start</code>：交叉轴的起点对齐。</li>
+<li><code>flex-end</code>：交叉轴的终点对齐。</li>
+<li><code>center</code>：交叉轴中点对齐。</li>
+<li><code>baseline</code>：项目的第一行文字的基线对齐。</li>
+<li><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器高|宽。</li>
+</ul>
+<hr>
+<h1 id="在线弹性盒子演示"><a href="#在线弹性盒子演示" class="headerlink" title="在线弹性盒子演示"></a>在线弹性盒子演示</h1><ul>
+<li><a href="https://demo.agektmr.com/flexbox/" target="_blank" rel="external">Flexbox Playground</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">Syouyu</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2017/12/30/Flexbox学习笔记/">http://yoursite.com/2017/12/30/Flexbox学习笔记/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/12/25/js继承/">
+        <span class="next-text nav-default">js继承</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:921393502@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/syou-yu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="http://www.jianshu.com/u/23bdc8ac2543" class="iconfont icon-jianshu" title="jianshu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Syouyu</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
