@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="学习笔记, JavaScript, Syouyu" />
+  <meta name="keywords" content="JavaScript, 学习笔记, Syouyu" />
 
 
 
@@ -244,7 +244,7 @@
 <li>在Parent的原型上定义一个getParentValue()的方法；</li>
 <li>创建Child的实例；</li>
 <li>将Parent的实例赋给Child.prototype;(原来存在于Parent的实例中的所有属性和方法，现在也存在于Child.prototype中)</li>
-<li>在Child的原型上定义一个getChildValue()的方法；(在继承了Parent的属性和方法的基础上添加了一个新方法)<br><strong>最终结果就是：instance指向Child的原型，Child的原型又指向Parent的原型。</strong><br><img src="http://i2.bvimg.com/625076/eb446f4415045513.jpg" alt="Markdown"><br>有需要注意的是：</li>
+<li>在Child的原型上定义一个getChildValue()的方法；(在继承了Parent的属性和方法的基础上添加了一个新方法)<br><strong>最终结果就是：instance指向Child的原型，Child的原型又指向Parent的原型。</strong><br><img src="http://syouyu.oss-cn-shenzhen.aliyuncs.com/blog-img/js%E7%BB%A7%E6%89%BF-1.jpg" alt="Markdown"><br>有需要注意的是：</li>
 </ol>
 <ul>
 <li><strong>getParentValue的方法依然还在Parent.prototype中，但parentValue则位于Child.prototype中。</strong>这是因为parentValue是一个实例属性，而getParentValue()是一个原型方法。Child.prototype是Parent的实例，所以parentValue作为实例属性就位于实例（Child.prototype）中。</li>
@@ -275,9 +275,9 @@
         
           <div class="post-tags">
             
-              <a href="/tags/学习笔记/">学习笔记</a>
-            
               <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
             
           </div>
         
