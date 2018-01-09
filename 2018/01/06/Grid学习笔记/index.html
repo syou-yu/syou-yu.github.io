@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Grid学习笔记"/>
+
+
+
+
+  <meta name="keywords" content="CSS, 学习笔记, Syouyu" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Syouyu">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/01/06/Grid学习笔记/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "vkr5ToIjonMNUK3Y1oav7kam-gzGzoHsz",
+      appKey: "jROcFNgDT5geaI2MCqU2bTDD"
+    });
+  </script>
+
+
+
+
+
+    <title> Grid学习笔记 - Syouyu </title>
+    
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Syouyu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            Demo
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Syouyu</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              Demo
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Grid学习笔记
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-01-06
+        </span>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/01/06/Grid学习笔记/"
+             data-title="Grid学习笔记">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#兼容性问题"><span class="toc-text">兼容性问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建网格容器"><span class="toc-text">创建网格容器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置行高列宽"><span class="toc-text">设置行高列宽</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-常见方法"><span class="toc-text">1. 常见方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用fr"><span class="toc-text">2. 使用fr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-行高列宽最小和最大尺寸"><span class="toc-text">3. 行高列宽最小和最大尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-创建重复网格"><span class="toc-text">4. 创建重复网格</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#间距"><span class="toc-text">间距</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网格项目定位"><span class="toc-text">网格项目定位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-合并单元格"><span class="toc-text">1. 合并单元格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-grid-area"><span class="toc-text">2. grid-area</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-grid-template-areas"><span class="toc-text">4. grid-template-areas</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更多"><span class="toc-text">更多</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Grid学习小游戏"><span class="toc-text">Grid学习小游戏</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>Grid用法总结<br><a id="more"></a></p>
+<h1 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h1><p>刚开始学Grid的时候跟着文档敲着学，但是不管怎样弄效果还是没有出来。（为了方便用的QQ浏览器。。。）一开始以为自己写错了，后来想了想应该是Grid的兼容性问题。<br>通过查阅<a href="https://caniuse.com/#home" target="_blank" rel="external">caniuse.com</a>搜索<a href="https://caniuse.com/#search=Grid" target="_blank" rel="external">Gird的兼容性</a>，果然，真的很尴尬。<br>(上面写的UC Browser for Android 不支持，不过我自己手机实测过，新版本可以支持。)</p>
+<h1 id="创建网格容器"><a href="#创建网格容器" class="headerlink" title="创建网格容器"></a>创建网格容器</h1><p>通过display属性设置属性值为grid或inline-grid可以创建一个网格容器。网格容器中的所有子元素就会自动变成网格项目（grid item）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line">    <span class="comment">/* display:inline-grid; */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/wonunuw/1/embed?css,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
+<h1 id="设置行高列宽"><a href="#设置行高列宽" class="headerlink" title="设置行高列宽"></a>设置行高列宽</h1><p>使用grid-template-columns和grid-template-rows属性可以显式的设置一个网格的列和行。<br>尺寸可以是任何非负值，长度可以是<code>px</code>、<code>%</code>、<code>em</code>等长度单位的值或者<code>fr</code>。</p>
+<h2 id="1-常见方法"><a href="#1-常见方法" class="headerlink" title="1. 常见方法"></a>1. 常见方法</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line">    <span class="attribute">grid-template-rows</span>:<span class="number">20px</span> <span class="number">20%</span> <span class="number">2em</span>;    <span class="comment">/* 设置三行，行高分别为20px 0% 2em。 */</span></div><div class="line">    <span class="attribute">grid-template-columns</span>:<span class="number">20px</span> <span class="number">20%</span> <span class="number">2em</span>;  <span class="comment">/* 设置三列，列宽分别为20px 20% 2em。 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a class="jsbin-embed" href="http://jsbin.com/wonunuw/2/embed?css,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
+<h2 id="2-使用fr"><a href="#2-使用fr" class="headerlink" title="2. 使用fr"></a>2. 使用fr</h2><p><code>fr</code>代表了网格容器中可用的空间。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line">    <span class="attribute">grid-template-columns</span>:<span class="number">50px</span> <span class="number">1</span>fr <span class="number">50px</span>; </div><div class="line">    <span class="comment">/* 设置三列，列宽分别为左固定100px 中间自适应宽度（宽度为） 右固定100px。 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/wonunuw/5/embed?css,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
+<h2 id="3-行高列宽最小和最大尺寸"><a href="#3-行高列宽最小和最大尺寸" class="headerlink" title="3. 行高列宽最小和最大尺寸"></a>3. 行高列宽最小和最大尺寸</h2><p>通过<code>minmax()</code>函数来创建网格轨道的最小或最大尺寸。<br><code>minmax()</code>函数接受两个参数：<code>minmax(第一个参数定义网格轨道的最小值，第二个参数定义网格轨道的最大值)</code>。<br>可以接受任何长度值，也接受auto值。auto值允许网格轨道基于内容的尺寸拉伸或挤压。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line"></div><div class="line">    <span class="attribute">grid-template-rows</span>: <span class="built_in">minmax</span>(100px, auto);  </div><div class="line">    <span class="comment">/* 第一行的高度最小值是100px，但其最大值为auto，允许行高可以变大超过100px */</span></div><div class="line"></div><div class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">minmax</span>(auto, 50%) <span class="number">1</span>fr <span class="number">3em</span>;</div><div class="line">    <span class="comment">/* 第一列的宽度最小值是auto，但其最大值为50%，列的最大宽度不会超过网格容器宽度的50% */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4-创建重复网格"><a href="#4-创建重复网格" class="headerlink" title="4. 创建重复网格"></a>4. 创建重复网格</h2><p>使用<code>repeat()</code>可以创建重复的网格轨道。这个适用于创建相等尺寸的网格项目和多个网格项目。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line"></div><div class="line">    <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(4, 100px);</div><div class="line">    <span class="comment">/* 创建四行行高各为100px 的行 */</span></div><div class="line"></div><div class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(2, 100px);</div><div class="line">    <span class="comment">/* 创建四列列宽各为100px 的列 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="间距"><a href="#间距" class="headerlink" title="间距"></a>间距</h1><p><code>grid-column-gap</code>和<code>grid-row-gap</code>属性用来创建列与列，行与行之间的间距。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line"></div><div class="line">    <span class="attribute">grid-row-gap</span>: <span class="number">20px</span>; <span class="comment">/* 设置行间距为20px */</span></div><div class="line">    <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; <span class="comment">/* 设置列间距为10px */</span></div><div class="line">    <span class="comment">/* grid-gap:20px 10px; 设置行间距为20px,列间距为10px */</span></div><div class="line">    <span class="comment">/* grid-gap:行间距 列间距; */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="网格项目定位"><a href="#网格项目定位" class="headerlink" title="网格项目定位"></a>网格项目定位</h1><p>每个网格都是由网格线从1开始排下去。<br>可以通过在网格项目内设置<strong>行或列的开始和结束位置</strong>定位到项目的位置。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item1</span>&#123;</div><div class="line">    <span class="attribute">grid-row</span>:<span class="number">2</span>/<span class="number">3</span>; <span class="comment">/* 设置item1所在位置在第2条行线到第3条行线之间 */</span></div><div class="line">    <span class="attribute">grid-column</span>:<span class="number">3</span>/<span class="number">4</span>; <span class="comment">/* 设置item1所在位置在第3条列线到第4条列线之间 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="1-合并单元格"><a href="#1-合并单元格" class="headerlink" title="1. 合并单元格"></a>1. 合并单元格</h2><ol>
+<li>使用<code>grid-row</code>和<code>grid-column</code>实现多行或多列的跨越。</li>
+<li>使用<code>span</code>后面紧随数字，表示合并多少个列或行。<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 使用grid-row和grid-column： */</span></div><div class="line"><span class="selector-class">.item1</span>&#123;</div><div class="line">    <span class="attribute">grid-row</span>:<span class="number">1</span>/<span class="number">3</span>;</div><div class="line">    <span class="attribute">grid-column</span>:<span class="number">1</span>/<span class="number">3</span>;</div><div class="line">    <span class="comment">/* 设置item1的位置在 行线1-3 和 列线1-3 之间。即合并2*2的单元格 */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 使用`span`后面紧随数字 */</span></div><div class="line"><span class="selector-class">.item2</span>&#123;</div><div class="line">    <span class="attribute">grid-row</span>:<span class="number">2</span>/span2;</div><div class="line">    <span class="attribute">grid-column</span>:<span class="number">2</span>/span2;</div><div class="line">    <span class="comment">/* 设置item2的位置从行线2开始合并2个单元格，从列线2开始合并2个单元格 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-grid-area"><a href="#2-grid-area" class="headerlink" title="2. grid-area"></a>2. grid-area</h2><p><code>grid-area</code>遵循的规则是grid-area: row-start / column-start / row-end / column-end。<br>即<strong>grid-area:行开始线/列开始线/行结束线/列结束线;</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item1</span>&#123;</div><div class="line">    <span class="attribute">grid-area</span>:<span class="number">1</span>/<span class="number">1</span>/<span class="number">2</span>/<span class="number">3</span>;</div><div class="line">    <span class="comment">/* item1位置是从 行线1到行线2，从列线1到列线3 所围成的区域 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4-grid-template-areas"><a href="#4-grid-template-areas" class="headerlink" title="4. grid-template-areas"></a>4. grid-template-areas</h2><p>通过<code>grid-template-areas</code>属性来定义网格区域的名称，<br>然后需要放在对应网格区域的元素，可以通过<code>grid-area</code>属性来指定。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">display</span>:grid;</div><div class="line">    <span class="comment">/* 省略创建一个3*3网格 */</span></div><div class="line">    <span class="attribute">grid-template-areas</span>:</div><div class="line">    <span class="string">"item1 item1 item1"</span></div><div class="line">    <span class="string">"item1 item2 item2"</span></div><div class="line">    <span class="string">"item2 item2 item2"</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.item1</span>&#123;</div><div class="line">    <span class="attribute">grid-area</span>:item1;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.item2</span>&#123;</div><div class="line">    <span class="attribute">grid-area</span>:item2;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>Grid的方法实在是挺多而且也是在不断发展和兼容新浏览器。上面的方法在日常使用中应该够用了。<br>其他的还有层叠的方法，还有Grid+Flexbox结合的方法等等。<br>这个在<a href="https://www.w3cplus.com/search/node/grid" target="_blank" rel="external">w3cplus Grid</a> 里面有很多相关的文章。</p>
+<ul>
+<li><a href="https://www.w3cplus.com/css/learncssgrid.html" target="_blank" rel="external">学习CSS Grid </a> </li>
+<li><a href="https://www.w3cplus.com/css3/how-to-enable-support-for-grid-layout-in-various-browsers.html" target="_blank" rel="external">CSS Grid布局：浏览器开启CSS Grid Layout </a></li>
+<li><a href="https://www.w3cplus.com/css3/playing-with-css-grid-layout.html" target="_blank" rel="external">CSS Grid布局这样玩</a></li>
+</ul>
+<p><strong>结合下面的小游戏能更深刻学习Grid</strong></p>
+<hr>
+<h1 id="Grid学习小游戏"><a href="#Grid学习小游戏" class="headerlink" title="Grid学习小游戏"></a>Grid学习小游戏</h1><ul>
+<li><a href="http://cssgridgarden.com/#zh-cn" target="_blank" rel="external">Grid Garden</a> 灌溉萝卜和除杂草的游戏</li>
+</ul>
+<hr>
+<p>以上参考<a href="https://www.w3cplus.com/css/learncssgrid.html" target="_blank" rel="external">学习CSS Grid </a><br>作者：大漠 日期：2017-05-18</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/12/30/Flexbox学习笔记/">
+        <span class="next-text nav-default">Flexbox学习笔记</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:921393502@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/syou-yu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="http://www.jianshu.com/u/23bdc8ac2543" class="iconfont icon-jianshu" title="jianshu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Syouyu</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
